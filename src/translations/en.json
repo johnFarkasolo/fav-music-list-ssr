@@ -17,5 +17,6 @@
   "deleteTitle": "Delete album",
   "accept": "Yes",
   "decline": "No",
-  "emptyState": "No Albums Found"
+  "emptyState": "No Albums Found",
+  "spinnerText": "Loading..."
 }

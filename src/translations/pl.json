@@ -17,5 +17,6 @@
   "deleteTitle": "Usuń album",
   "accept": "Tak",
   "decline": "Nie",
-  "emptyState": "Nie znaleziono albumów"
+  "emptyState": "Nie znaleziono albumów",
+  "spinnerText": "Ładowanie..."
 }
