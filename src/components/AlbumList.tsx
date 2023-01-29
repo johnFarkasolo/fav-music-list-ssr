@@ -18,15 +18,9 @@ export const AlbumList = ({
   onAddToFavorite,
   onDelete,
 }: AlbumListProps) => {
-  const [isShowModal, setIsShowModal] = useState(false);
   const {
     dispatch: { translate },
   } = useContext(LangContext);
-
-  const onAccept = (key: string) => {
-    onDelete(key);
-    setIsShowModal(false);
-  };
 
   if (!albums.length) {
     return <EmptyData />;
@@ -58,17 +52,9 @@ export const AlbumList = ({
               </Button>
             </td>
             <td>
-              <Button
-                variant="outline-secondary"
-                onClick={() => setIsShowModal(true)}
-              >
+              <Button variant="outline-secondary" onClick={() => onDelete(id)}>
                 <TrashIcon color="black" />
               </Button>
-              <DeleteModal
-                isShow={isShowModal}
-                onClose={() => setIsShowModal(false)}
-                onAccept={() => onAccept(id)}
-              />
             </td>
           </tr>
         ))}

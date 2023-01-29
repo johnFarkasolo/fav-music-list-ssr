@@ -18,13 +18,6 @@ export const AlbumGrid = ({
   onDelete,
   onAddToFavorite,
 }: AlbumGridProps) => {
-  const [isShowModal, setIsShowModal] = useState(false);
-
-  const onAccept = (key: string) => {
-    onDelete(key);
-    setIsShowModal(false);
-  };
-
   if (!albums.length) {
     return <EmptyData />;
   }
@@ -38,14 +31,9 @@ export const AlbumGrid = ({
               <Button variant="light" onClick={() => onAddToFavorite(id)}>
                 <HeartIcon fill={isFavorite ? "red" : "none"} />
               </Button>
-              <Button variant="light" onClick={() => setIsShowModal(true)}>
+              <Button variant="light" onClick={() => onDelete(id)}>
                 <TrashIcon color="black" />
               </Button>
-              <DeleteModal
-                isShow={isShowModal}
-                onClose={() => setIsShowModal(false)}
-                onAccept={() => onAccept(id)}
-              />
             </Card.Header>
             <Card.Body>
               <Stack
