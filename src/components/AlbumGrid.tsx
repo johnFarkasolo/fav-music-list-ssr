@@ -3,6 +3,7 @@ import { Card, Stack, Button, Row, Col } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { HeartIcon, TrashIcon } from "../assets/icons";
 import { Album } from "../types/album";
+import { textEllipsis } from "../utils/string";
 import { DeleteModal } from "./UI/DeleteModal";
 import { EmptyData } from "./UI/EmptyData";
 
@@ -33,17 +34,11 @@ export const AlbumGrid = ({
       {albums.map(({ id, albumName, artistName, createDate, isFavorite }) => (
         <Col key={id}>
           <Card className="h-100 text-reset text-decoration-none card">
-            <CardHeader className="d-flex justify-content-between">
-              <Button
-                variant="outline-secondary"
-                onClick={() => onAddToFavorite(id)}
-              >
+            <Card.Header className="d-flex justify-content-between">
+              <Button variant="light" onClick={() => onAddToFavorite(id)}>
                 <HeartIcon fill={isFavorite ? "red" : "none"} />
               </Button>
-              <Button
-                variant="outline-secondary"
-                onClick={() => setIsShowModal(true)}
-              >
+              <Button variant="light" onClick={() => setIsShowModal(true)}>
                 <TrashIcon color="black" />
               </Button>
               <DeleteModal
@@ -51,15 +46,15 @@ export const AlbumGrid = ({
                 onClose={() => setIsShowModal(false)}
                 onAccept={() => onAccept(id)}
               />
-            </CardHeader>
+            </Card.Header>
             <Card.Body>
               <Stack
                 gap={2}
                 className="align-items-center justify-content-center h-100"
               >
                 <span className="fs-8">{createDate}</span>
-                <span className="fs-3">{albumName}</span>
-                <span className="fs-6">{artistName}</span>
+                <span className="fs-3">{textEllipsis(albumName, 12)}</span>
+                <span className="fs-6">{textEllipsis(artistName, 12)}</span>
               </Stack>
             </Card.Body>
           </Card>
