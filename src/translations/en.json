@@ -1,0 +1,21 @@
+{
+  "home": "Zalupsssss",
+  "albumTitle": "Album title",
+  "artistTitle": "Artist title",
+  "addNewButton": "Add new album",
+  "search": "Search by album",
+  "sort": "Sort",
+  "sortByid": "by id",
+  "sortByAlbums": "by album",
+  "sortByArtist": "by artist",
+  "sortByDate": "by date",
+  "albumName": "Album name",
+  "authorName": "Author name",
+  "toastSuccess": "Album has been added",
+  "toastDelete": "Album has been deleted successfully",
+  "deleteMessage": "Are you sure you want to delete the album?",
+  "deleteTitle": "Delete album",
+  "accept": "Yes",
+  "decline": "No",
+  "emptyState": "No Albums Found"
+}
