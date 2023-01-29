@@ -1,8 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Table, Button } from "react-bootstrap";
 import { HeartIcon, TrashIcon } from "../assets/icons";
 import { Album } from "../types/album";
-import { DeleteModal } from "./UI/DeleteModal";
 import { EmptyData } from "./UI/EmptyData";
 import { LangContext } from "../context/LanguageContext";
 import { textEllipsis } from "../utils/string";

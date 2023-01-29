@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { Card, Stack, Button, Row, Col } from "react-bootstrap";
-import CardHeader from "react-bootstrap/esm/CardHeader";
 import { HeartIcon, TrashIcon } from "../assets/icons";
 import { Album } from "../types/album";
 import { textEllipsis } from "../utils/string";
-import { DeleteModal } from "./UI/DeleteModal";
 import { EmptyData } from "./UI/EmptyData";
 
 interface AlbumGridProps {
