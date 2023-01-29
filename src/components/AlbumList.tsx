@@ -1,10 +1,11 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import { HeartIcon, TrashIcon } from "../assets/icons";
 import { Album } from "../types/album";
 import { DeleteModal } from "./UI/DeleteModal";
 import { EmptyData } from "./UI/EmptyData";
 import { LangContext } from "../context/LanguageContext";
+import { textEllipsis } from "../utils/string";
 
 interface AlbumListProps {
   albums: Album[];
@@ -17,15 +18,9 @@ export const AlbumList = ({
   onAddToFavorite,
   onDelete,
 }: AlbumListProps) => {
-  const [isShowModal, setIsShowModal] = useState(false);
   const {
     dispatch: { translate },
   } = useContext(LangContext);
-
-  const onAccept = (key: string) => {
-    onDelete(key);
-    setIsShowModal(false);
-  };
 
   if (!albums.length) {
     return <EmptyData />;
@@ -46,8 +41,8 @@ export const AlbumList = ({
         {albums.map(({ id, albumName, artistName, isFavorite }, index) => (
           <tr key={id}>
             <td>{index + 1}</td>
-            <td>{albumName}</td>
-            <td>{artistName}</td>
+            <td>{textEllipsis(albumName, 16)}</td>
+            <td>{textEllipsis(artistName, 16)}</td>
             <td>
               <Button
                 variant="outline-secondary"
@@ -57,17 +52,9 @@ export const AlbumList = ({
               </Button>
             </td>
             <td>
-              <Button
-                variant="outline-secondary"
-                onClick={() => setIsShowModal(true)}
-              >
+              <Button variant="outline-secondary" onClick={() => onDelete(id)}>
                 <TrashIcon color="black" />
               </Button>
-              <DeleteModal
-                isShow={isShowModal}
-                onClose={() => setIsShowModal(false)}
-                onAccept={() => onAccept(id)}
-              />
             </td>
           </tr>
         ))}

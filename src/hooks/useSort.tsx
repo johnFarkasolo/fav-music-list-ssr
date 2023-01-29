@@ -17,7 +17,7 @@ export const useSort = (
         );
       })
       .filter((album) => (onlyFavorite ? album.isFavorite : true));
-  }, [search, albums, onlyFavorite]);
+  }, [search, albums, onlyFavorite, sortKey]);
 
   const sortedAlbums = useMemo(() => {
     let sortedCopy = [];
