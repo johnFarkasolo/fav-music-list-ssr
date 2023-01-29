@@ -55,5 +55,3 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     </LangContext.Provider>
   );
 };
-
-export default LangState;
