@@ -20,7 +20,7 @@ export const useSort = (
   }, [search, albums, onlyFavorite, sortKey]);
 
   const sortedAlbums = useMemo(() => {
-    let sortedCopy = [];
+    let sortedCopy: Album[];
 
     switch (sortKey) {
       case "id":
