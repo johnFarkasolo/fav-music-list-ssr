@@ -6,38 +6,37 @@ export const useSort = (
   sortKey: string,
   onlyFavorite: boolean
 ) => {
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState("");
+  const searchLower = search.toLowerCase();
 
   const filteredAlbums = useMemo(() => {
     return albums
-      .filter((album) => {
-        return (
-          search === "" ||
-          album.albumName.toLowerCase().includes(search.toLowerCase())
-        );
-      })
+      .filter(
+        (album) =>
+          search === "" || album.albumName.toLowerCase().includes(searchLower)
+      )
       .filter((album) => (onlyFavorite ? album.isFavorite : true));
-  }, [search, albums, onlyFavorite, sortKey]);
+  }, [searchLower, albums, onlyFavorite]);
 
   const sortedAlbums = useMemo(() => {
-    let sortedCopy: Album[];
+    let sorted: Album[];
 
     switch (sortKey) {
       case "id":
       case "albumName":
       case "artistName":
       case "createDate":
-        sortedCopy = [...filteredAlbums].sort((a, b) => {
-          return a[sortKey].localeCompare(b[sortKey]);
-        });
+        sorted = filteredAlbums.sort((a, b) =>
+          a[sortKey].localeCompare(b[sortKey])
+        );
         break;
       default:
-        sortedCopy = filteredAlbums;
+        sorted = filteredAlbums;
         break;
     }
 
-    return sortedCopy;
-  }, [sortKey, search, albums, onlyFavorite]);
+    return sorted;
+  }, [sortKey, filteredAlbums]);
 
   return {
     search,
